@@ -7,4 +7,4 @@ export default defineEventHandler((event) => {
         res.writeHead(301, {Location: "/tin-tuc"});
         res.end();
     }
-})
+}) 
