@@ -1,4 +1,9 @@
 <script setup lang="ts">
+
+definePageMeta({
+  middleware: ("auth2")
+})
+
 import { onMounted, onBeforeUnmount, ref, watch } from "vue";
 import axios from "axios";
 
@@ -86,12 +91,12 @@ onMounted(() => {
         <div>
           <div v-if="news.length > 0" class="flex flex-wrap -m-4">
             <div v-for="n in news" :key="n.url" class="xl:w-1/3 md:w-1/2 p-4">
-              <div class="bg-white p-6 rounded-lg">
+              <a :href="n?.url" class="bg-white p-6 rounded-lg">
                 <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded w-full object-cover object-center mb-6" :src="n.urlToImage ? n.urlToImage : 'https://images.assetsdelivery.com/compings_v2/koblizeek/koblizeek2204/koblizeek220400315.jpg'" alt="Image Size 720x400">
                 <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">{{ n.author ? n.author : "Anonymous" }}</h3>
                 <h2 class="text-lg text-gray-900 font-medium title-font mb-4 truncate">{{ n.title ? n.title : "no title"}}</h2>
                 <p class="leading-relaxed text-base line-clamp-3">{{ n.description ? n.description : "no description" }}</p>
-              </div>
+              </a>
             </div>
           </div>
           <div v-else class="text-center text-gray-600 py-10">

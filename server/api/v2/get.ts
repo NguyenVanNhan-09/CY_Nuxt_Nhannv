@@ -1,9 +1,10 @@
 import axios from "axios";
 
 export default defineEventHandler(async (e) => {
+    const dateNow = new Date();
     const API_KEY = process.env.API_KEY;
     const { topic, page = 1, limit = 6 } = getQuery(e);
-    const from = "2024-10-09";
+    const from = `${dateNow.getFullYear()} - ${dateNow.getMonth()} - ${dateNow.getDate()}`;
     const sortBy = "publishedAt";
     const q = topic || "tesla";
 
