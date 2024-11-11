@@ -55,6 +55,10 @@ onMounted(() => {
     window.removeEventListener("scroll", onScroll);
   });
 });
+
+onMounted(()=>{
+  useAlert().showConfirm("HIHI");
+})
 </script>
 
 <template>
